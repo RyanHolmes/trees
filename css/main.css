@@ -1,3 +1,17 @@
+/*text area for json*/
 #json_render {
-  height: 200px;
+  height: 300px;
+}
+
+/*everything - container*/
+#main {
+
+}
+
+#tree {
+
+}
+
+#tip {
+  color: gray;
 }

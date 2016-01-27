@@ -61,23 +61,3 @@ function save(){
     $("#json_render").val(JSON.stringify(v))
   }
 };
-
-function rebuild_tree(){
-  $('#tree').jstree({
-    'core' : {
-      'check_callback' : true,
-      'data' : tree_data,
-    },
-    "search" : {
-      "case_insensitive" : true
-    },
-    "plugins": ["contextmenu", "dnd", "search", "wholerow"],
-    "contextmenu" : {
-      "items": customMenu
-    }
-  });
-};
-
-function delete_tree(){
-  $('#tree').jstree("destroy").empty();
-};
