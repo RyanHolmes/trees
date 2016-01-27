@@ -7,6 +7,7 @@
 		<script src="../js/jquery-2.1.4.js"></script>
 		<script src="../js_tree/dist/jstree.js"></script>
 		<script src="../js/tree.js"></script>
+		<script src="../js/data.js"></script>
 
 		<!-- Styles -->
 		<link rel="stylesheet" href="../css/main.css">
@@ -27,11 +28,20 @@
 		<button onclick="save();">Save</button>
 		<button onclick="delete_tree();">Delete Tree</button>
 		<button onclick="rebuild_tree();">Rebuild Tree</button>
-			<div id="tree">
 
-			<!--  LOADS JSON DATA-->
+		<div class="container" id="main">
+				<div class="row" id="tree">
 
-			</div>
+				<!--  LOADS JSON DATA-->
+
+				</div>
+
+				<div class="row" style="padding-top: 25px;">
+					<textarea id="json_render"> </textarea>
+				</div>
+
+		</div>
+
 	</body>
 
 </html>

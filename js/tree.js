@@ -1,18 +1,14 @@
 var tree_data;
-var data;
+
 $(document).ready(function(){
-  // adjustModal();
-  data = [
-    { "text" : "Root node", "children" : [
-        { "text" : "Child node 1" },
-        { "text" : "Child node 2" }
-    ]}
-  ];
+  $("#json_render").width($("#main").width())
+  var obj = getData();
+  tree_data = obj;
 
   $('#tree').jstree({
     'core' : {
       'check_callback' : true,
-      'data' : data,
+      'data' : obj,
     },
     "search" : {
       "case_insensitive" : true
@@ -62,7 +58,7 @@ function save(){
   if(tree != null){
     v = $("#tree").jstree(true).get_json('#', { 'flat': true });
     tree_data = v;
-    console.log(tree_data)
+    $("#json_render").val(JSON.stringify(v))
   }
 };
 
