@@ -61,3 +61,12 @@ function save(){
     $("#json_render").val(JSON.stringify(v))
   }
 };
+
+function iterate(){
+  v = $("#tree").jstree(true).get_json('#', { 'flat': true });
+  arr = [];
+  for(var i in v){//TODO: check if its a leaf 
+    arr.push(v[i]);
+  }
+  console.log(arr);
+};
