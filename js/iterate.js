@@ -1,15 +1,25 @@
+var whole;
+
 function initIterate() {
   v = $("#tree").jstree(true).get_json('#', { 'flat': true });
   var root = findRoot(v);
   var rootNode = new Node();
   rootNode.create(root.id, root.text, []);
-  buildTree(rootNode, v);
+  whole = buildChildren(rootNode, v);
+  console.log(whole);
 };
 
-function buildTree(root, treeJson){
-  //have -> root node id
-  //need -> to use json of tree to find elements with the root as parent, make them nodes, add to children array of root
-
+function buildChildren(node, treeJson){
+  // exit cond -> no node has this as a parent
+  for(var i in treeJson) {
+    if(treeJson[i].parent == node.id) {
+      var tempNode = new Node();
+      tempNode.create(treeJson[i].id, treeJson[i].text, []);
+      node.children.push(tempNode);
+    }
+  }
+  return node;
+  // console.log(node);
 };
 
 function findRoot(v){
@@ -18,10 +28,6 @@ function findRoot(v){
       return v[i];
     }
   }
-};
-
-function findChildren(nodeId, treeJson){
-
 };
 
 // function iterateLeafs(e){
