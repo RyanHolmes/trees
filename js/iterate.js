@@ -16,10 +16,12 @@ function buildChildren(node, treeJson){
       var tempNode = new Node();
       tempNode.create(treeJson[i].id, treeJson[i].text, []);
       node.children.push(tempNode);
+      if(!isLeaf(tempNode.id, treeJson)){
+        buildChildren(tempNode, treeJson);
+      }
     }
   }
   return node;
-  // console.log(node);
 };
 
 function findRoot(v){
@@ -30,10 +32,15 @@ function findRoot(v){
   }
 };
 
-// function iterateLeafs(e){
-//   v = $("#tree").jstree(true).get_json('#', { 'flat': true });
-//   arr = [];
-//   for(var i in v){//TODO: check if its a leaf
-//     arr.push(v[i]);
-//   }
-// };
+function isLeaf(id, tree){
+  var isLeaf = false;
+  for(var i in tree) {
+    if(tree[i].parent == id) {
+     return false
+    }
+    else {
+      isLeaf = true;
+    }
+  }
+  return isLeaf;
+};
