@@ -27,11 +27,11 @@
 	</head>
 
 	<body class="body">
-		<button onclick="save();">Save</button>
-		<!-- <a href="iterate.html"> <button>Iterate</button> </a> -->
-		<button onclick="initIterate();">Iterate</button>
 		<input style="max-width:150px;" class="search-input form-control pull-right" placeholder="Search"></input>
-		<div class="container" id="main">
+
+		<div class="container" id="mainTree">
+			<button onclick="save();">Save</button>
+			<button onclick="initIterate();">Iterate</button>
 			<div class="row" id="tree">
 
 			<!--  LOADS JSON DATA-->
@@ -42,6 +42,16 @@
 				<p class="tip"> **Copy and Paste this JSON into js/data.js (ctl + a, clt + c)** </p>
 				<textarea id="json_render"> </textarea>
 			</div>
+
+		</div>
+
+		<!-- THIS WILL BE WHERE YOU ITERATE -->
+		<div class="container hidden" id="mainIterate">
+			<button onclick="toggleContainers();">Tree Visualization</button>
+			<div class="row" id="mainIterate">
+				poop
+			</div>
+
 		</div>
 
 	</body>

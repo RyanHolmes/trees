@@ -1,6 +1,7 @@
 var whole;
 
 function initIterate() {
+  toggleContainers();
   v = $("#tree").jstree(true).get_json('#', { 'flat': true });
   var root = findRoot(v);
   var rootNode = new Node();
@@ -45,7 +46,12 @@ function isLeaf(id, tree){
   return isLeaf;
 };
 
-//pass in a segment of the tree, this will return a flat array of leafs
+//pass in a segment of the built tree, this will return a flat array of leafs
 function iterate(){
 
 };
+
+function toggleContainers(){
+  $('#mainTree').toggleClass("hidden");
+  $('#mainIterate').toggleClass("hidden");
+}

@@ -1,7 +1,7 @@
 var tree_data;
 
 $(document).ready(function(){
-  $("#json_render").width($("#main").width())
+  $("#json_render").width($("#mainTree").width())
   var obj = getData();
   tree_data = obj;
 
