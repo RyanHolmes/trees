@@ -19,6 +19,12 @@ $(document).ready(function(){
     }
   });
 
+  $(".search-input").keyup(function() {
+      var searchString = $(this).val();
+      console.log(searchString);
+      $('#tree').jstree('search', searchString);
+    });
+
 });
 
 function customMenu(node) {

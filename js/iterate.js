@@ -44,3 +44,8 @@ function isLeaf(id, tree){
   }
   return isLeaf;
 };
+
+//pass in a segment of the tree, this will return a flat array of leafs
+function iterate(){
+
+};
