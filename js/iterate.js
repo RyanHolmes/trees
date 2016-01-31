@@ -46,9 +46,14 @@ function isLeaf(id, tree){
   return isLeaf;
 };
 
-//pass in a segment of the built tree, this will return a flat array of leafs
-function iterate(){
+//pass in a segment of the built tree, this will return a flat array of leafs TODO
+function getLeafs(tree){
+  leafs = [];
+  return leafs;
+};
 
+function iterateAll(){
+  var leafs = getLeafs(whole);
 };
 
 function toggleContainers(){
