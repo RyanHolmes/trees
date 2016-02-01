@@ -52,7 +52,7 @@ function isLeaf(id){
 };
 
 function iterateAll(){
-  $("#mainNode").toggleClass("hidden");
+  $("#allLeafs").toggleClass("hidden");
   $('#randomCheckbox').prop('checked', true); //random iteration by default
   buildLeafArray();
   nextNode(isRandom);
@@ -79,7 +79,7 @@ function nextNode(r) {
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
       $('#nodeGParent').text(path.gParent);
-      $('#progess').text("> " + allLeafs.length + " Nodes Remaining"); 
+      $('#progess').text("> " + allLeafs.length + " Nodes Remaining");
       allLeafs.splice(firstItemIndex, 1);
     }
   }
@@ -88,7 +88,7 @@ function nextNode(r) {
     $('#nodeChild').text(path.child);
     $('#nodeParent').text(path.parent);
     $('#nodeGParent').text(path.gParent);
-    $('#progess').text("> " + allLeafs.length + " Nodes Remaining");
+    $('#progess').text("> " + (allLeafs.length - 1) + " Nodes Remaining");
     allLeafs.splice(0, 1);
   }
 };
@@ -132,4 +132,8 @@ function findParent(item){
 function random(){
   isRandom = $('#randomCheckbox').prop('checked');
   buildLeafArray(); //rebuild whenever random mode is toggled
+};
+
+function byDateInit(e){
+  console.log(e);
 };

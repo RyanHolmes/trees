@@ -15,3 +15,12 @@
 #tip {
   color: gray;
 }
+
+.dropDownElt{
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.dropDownElt:hover{
+  background-color: grey;
+}

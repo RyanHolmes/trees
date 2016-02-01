@@ -5,6 +5,7 @@
 
 		 <!-- scripts -->
 		<script src="../js/jquery-2.1.4.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js_tree/dist/jstree.js"></script>
 		<script src="../js/tree.js"></script>
 		<script src="../js/data.js"></script>
@@ -27,11 +28,29 @@
 	</head>
 
 	<body class="body">
-		<input style="max-width:150px;" class="search-input form-control pull-right" placeholder="Search"></input>
 
 		<div class="container" id="mainTree">
-			<button onclick="save();">Save</button>
+			<!-- TODO hookup search bar  -->
+			<nav class="navbar navbar-default">
+			  <div class="container">
+			    <ul class="nav navbar-nav">
+			      <li><a href="#" onclick="save();">Save</a></li>
+						<li><a href="#" onclick="initIterate();">Iterate</a></li>
+						<li> <form class="navbar-form" role="search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="q">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </form> </li>
+			    </ul>
+			  </div>
+			</nav>
+
+			<!-- <button onclick="save();">Save</button>
 			<button onclick="initIterate();">Iterate</button>
+			<input style="max-width:150px;" class="search-input form-control pull-right" placeholder="Search"></input> -->
 			<div class="row" id="tree">
 
 			<!--  LOADS JSON DATA-->
@@ -47,17 +66,39 @@
 
 		<!-- THIS WILL BE WHERE YOU ITERATE -->
 		<div class="container hidden" id="mainIterate">
-			<button onclick="toggleContainers();"> Tree Visualization </button>
-			<button onclick="iterateAll();"> All Leafs </button>
+
+			<nav class="navbar navbar-default">
+			  <div class="container">
+			    <ul class="nav navbar-nav">
+			      <li><a href="#" onclick="toggleContainers();">Tree</a></li>
+			      <li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown"> By Date <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li class="dropDownElt" onclick="byDateInit('week');"> This Week </li>
+								<li class="dropDownElt" onclick="byDateInit('oneMonth');"> This Month </li>
+								<li class="dropDownElt" onclick="byDateInit('twoMonths');"> Last 2 Months </li>
+								<li class="dropDownElt" onclick="byDateInit('threeMonths');"> Last 3 Months </li>
+								<li class="dropDownElt" onclick="byDateInit('sixMonths');"> Last 6 Months </li>
+								<li class="dropDownElt" onclick="byDateInit('year');"> This Year </li>
+								<li class="divider"></li>
+								<li class="dropDownElt" onclick="iterateAll();"> All </li>
+							</ul>
+						</li>
+			      <li><a href="#" onclick="iterateNode();">By Node</a></li>
+			    </ul>
+			  </div>
+			</nav>
+
 			<div class="row" id="mainIterate">
 			<label><input type="checkbox" value="" id="randomCheckbox" checked onchange="random()"> Random Iteration </label>
-				<div class="hidden jumbotron" id="mainNode">
+				<div class="hidden jumbotron" id="allLeafs">
 					<h6 id="progess"></h6>
 					<h4 id="nodeGParent"></h4>
 					<h3 id="nodeParent"></h3>
 					<h2 id="nodeChild"></h2>
 					<button onclick="next();" id="nextNode"> Next </button>
 				</div>
+
 			</div>
 
 		</div>
