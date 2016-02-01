@@ -50,7 +50,11 @@
 			<button onclick="toggleContainers();"> Tree Visualization </button>
 			<button onclick="iterateAll();"> All Leafs </button>
 			<div class="row" id="mainIterate">
-				poop
+			<label><input type="checkbox" value="" id="randomCheckbox" checked> Random Iteration </label>
+				<div class="hidden" id="mainNode">
+					<div id="nodePath">  </div>
+					<button onclick="nextNode();" id="nextNode"> Next </button>
+				</div>
 			</div>
 
 		</div>
