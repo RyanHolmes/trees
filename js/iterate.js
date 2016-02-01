@@ -79,6 +79,7 @@ function nextNode(r) {
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
       $('#nodeGParent').text(path.gParent);
+      $('#progess').text("> " + allLeafs.length + " Nodes Remaining"); 
       allLeafs.splice(firstItemIndex, 1);
     }
   }
@@ -87,6 +88,7 @@ function nextNode(r) {
     $('#nodeChild').text(path.child);
     $('#nodeParent').text(path.parent);
     $('#nodeGParent').text(path.gParent);
+    $('#progess').text("> " + allLeafs.length + " Nodes Remaining");
     allLeafs.splice(0, 1);
   }
 };
