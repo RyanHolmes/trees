@@ -75,12 +75,19 @@ function nextNode(r) {
   if(r){
     if(allLeafs.length > 0){
       var firstItemIndex = Math.floor((Math.random() * (allLeafs.length - 1)));
-      $('#nodePath').text(getPath(allLeafs[firstItemIndex])); //then delete it from list
+      var path = getPath(allLeafs[firstItemIndex]);
+      $('#nodeChild').text(path.child);
+      $('#nodeParent').text(path.parent);
+      $('#nodeGParent').text(path.gParent);
       allLeafs.splice(firstItemIndex, 1);
     }
   }
-  else if (!r) {
-    console.log("Ordered!?"); //TODO
+  else if (!r) { //ordered iteration
+    var path = getPath(allLeafs[0]);
+    $('#nodeChild').text(path.child);
+    $('#nodeParent').text(path.parent);
+    $('#nodeGParent').text(path.gParent);
+    allLeafs.splice(0, 1);
   }
 };
 
@@ -91,19 +98,24 @@ function toggleContainers(){
 
 //up to a third degree
 function getPath(item){
-  var str = "";
-  str += item.text;
-  parent = findParent(item);
-  if (parent != null){
-    str = " > " + str;
-    str = parent.text + str;
+  if (item != null){
+    var child = "> " + item.text;
+    var parent = findParent(item);
+    var gParent = findParent(parent);
+    if (parent != null){
+      parent = "> " + parent.text;
+    }
+    else {
+      parent = "";
+    }
+    if (gParent != null){
+      gParent = "> " + gParent.text;
+    }
+    else {
+      gParent = "";
+    }
+    return {"child": child, "parent": parent, "gParent": gParent};
   }
-  gParent = findParent(parent);
-  if (gParent != null){
-    str = " > " + str;
-    str = gParent.text + str;
-  }
-  return str;
 };
 
 function findParent(item){

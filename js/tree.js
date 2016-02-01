@@ -33,7 +33,8 @@ function customMenu(node) {
         addItem: {
           label: "Add Item",
           action: function () {
-            tree.create_node(tree.get_selected(), "new node");
+            var newNode = tree.create_node(tree.get_selected(), "new node");
+            tree.get_node(newNode).data = new Date();
           }
         },
         renameItem: { // The "rename" menu item

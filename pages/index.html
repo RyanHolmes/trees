@@ -51,8 +51,10 @@
 			<button onclick="iterateAll();"> All Leafs </button>
 			<div class="row" id="mainIterate">
 			<label><input type="checkbox" value="" id="randomCheckbox" checked onchange="random()"> Random Iteration </label>
-				<div class="hidden" id="mainNode">
-					<div id="nodePath">  </div>
+				<div class="hidden jumbotron" id="mainNode">
+					<h4 id="nodeGParent"></h4>
+					<h3 id="nodeParent"></h3>
+					<h2 id="nodeChild"></h2>
 					<button onclick="next();" id="nextNode"> Next </button>
 				</div>
 			</div>
