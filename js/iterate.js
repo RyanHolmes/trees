@@ -1,7 +1,7 @@
 var whole;
 var allLeafs = [];
 var isRandom = true;
-var tree;
+var tree; //DO NOT MODIFY
 
 function initIterate() {
   toggleContainers();
@@ -12,7 +12,6 @@ function initIterate() {
     var rootNode = new Node();
     rootNode.create(root.id, root.text, []);
     whole = buildChildren(rootNode);
-    console.log(whole);
   }
 };
 
@@ -52,29 +51,36 @@ function isLeaf(id){
   return isLeaf;
 };
 
-//pass in a segment of the built tree, this will return a flat array of leafs TODO
-// function getLeafs(tree){
-//   leafs = [];
-//   return leafs;
-// };
-
 function iterateAll(){
   $("#mainNode").toggleClass("hidden");
-  v = $("#tree").jstree(true).get_json('#', { 'flat': true });
-  for(var i in v){
-    if(isLeaf(v[i].id, v)){
-      allLeafs.push(v[i]);
-    }
-  }
   $('#randomCheckbox').prop('checked', true); //random iteration by default
-  nextNode();
+  buildLeafArray();
+  nextNode(isRandom);
 };
 
-function nextNode() {
-  if(allLeafs.length > 0){
-    var firstItemIndex = Math.floor((Math.random() * (allLeafs.length - 1)));
-    $('#nodePath').text(getPath(allLeafs[firstItemIndex])); //then delete it from list
-    allLeafs.splice(firstItemIndex, 1);
+function buildLeafArray(){
+  allLeafs = [];
+  for(var i in tree){
+    if(isLeaf(tree[i].id, tree)){
+      allLeafs.push(tree[i]);
+    }
+  }
+};
+
+function next(){
+  nextNode(isRandom);
+};
+
+function nextNode(r) {
+  if(r){
+    if(allLeafs.length > 0){
+      var firstItemIndex = Math.floor((Math.random() * (allLeafs.length - 1)));
+      $('#nodePath').text(getPath(allLeafs[firstItemIndex])); //then delete it from list
+      allLeafs.splice(firstItemIndex, 1);
+    }
+  }
+  else if (!r) {
+    console.log("Ordered!?"); //TODO
   }
 };
 
@@ -89,12 +95,12 @@ function getPath(item){
   str += item.text;
   parent = findParent(item);
   if (parent != null){
-    str = "/" + str;
+    str = " > " + str;
     str = parent.text + str;
   }
   gParent = findParent(parent);
   if (gParent != null){
-    str = "/" + str;
+    str = " > " + str;
     str = gParent.text + str;
   }
   return str;
@@ -107,4 +113,9 @@ function findParent(item){
     }
   }
   return null;
+};
+
+function random(){
+  isRandom = $('#randomCheckbox').prop('checked');
+  buildLeafArray(); //rebuild whenever random mode is toggled
 };
