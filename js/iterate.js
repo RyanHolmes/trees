@@ -138,7 +138,7 @@ function leafsByDate(){
 
 };
 
-function byDateInit(period){
+function byDateInit(period){ //remake the allLeafs array based on dates
   switch (period){
     case 'week':
     break;

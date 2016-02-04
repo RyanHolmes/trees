@@ -23,6 +23,8 @@ $(document).ready(function(){
       var searchString = $(this).val();
       $('#tree').jstree('search', searchString);
     });
+    //set icon of root TODO
+    // $('#tree').jstree(true).get_node('j1_1').set_icon('../img/folder.png');
 
 });
 
@@ -42,7 +44,7 @@ function customMenu(node) {
           label: "Add Item",
           action: function () {
             var newNode = tree.create_node(tree.get_selected(), "new node");
-            tree.get_node(newNode).data = { "create_date": new Date(), "marked": false };
+            tree.get_node(newNode).data = { "create_date": new Date(), "marked": false, "success": 0, "failure": 0 };
             tree.set_icon(tree.get_node(newNode), '../img/folder.png');
           }
         },
@@ -58,7 +60,7 @@ function customMenu(node) {
               tree.delete_node([node]);
             }
         },
-        markItem: { // Mark item so it doesn't show up in iterate, change icon, mark all children TODO
+        markItem: { // mark all children TODO
             label: mark,
             action: function () {
                 if(node.data.marked == true){
