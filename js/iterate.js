@@ -61,7 +61,7 @@ function iterateAll(){
 function buildLeafArray(){
   allLeafs = [];
   for(var i in tree){
-    if(isLeaf(tree[i].id, tree)){
+    if(isLeaf(tree[i].id, tree) && !tree[i].data.marked){
       allLeafs.push(tree[i]);
     }
   }
@@ -79,7 +79,7 @@ function nextNode(r) {
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
       $('#nodeGParent').text(path.gParent);
-      $('#progess').text("> " + allLeafs.length + " Nodes Remaining");
+      $('#progess').text("> " + (allLeafs.length - 1) + " Nodes Remaining");
       allLeafs.splice(firstItemIndex, 1);
     }
   }
@@ -134,6 +134,23 @@ function random(){
   buildLeafArray(); //rebuild whenever random mode is toggled
 };
 
-function byDateInit(e){
-  console.log(e);
+function leafsByDate(){
+
+};
+
+function byDateInit(period){
+  switch (period){
+    case 'week':
+    break;
+    case 'oneMonth':
+    break;
+    case 'twoMonths':
+    break;
+    case 'threeMonths':
+    break;
+    case 'sixMonths':
+    break;
+    case 'year':
+    break;
+  }
 };

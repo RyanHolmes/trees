@@ -19,7 +19,7 @@ $(document).ready(function(){
     }
   });
 
-  $(".search-input").keyup(function() {
+  $("#search-input").keyup(function() {
       var searchString = $(this).val();
       $('#tree').jstree('search', searchString);
     });
@@ -29,12 +29,21 @@ $(document).ready(function(){
 function customMenu(node) {
     // The default set of all items
     var tree = $('#tree').jstree(true);
+    var node = tree.get_node(tree.get_selected());
+    var mark = "";
+    if (node.data.marked == false){
+        mark = "Mark";
+    }
+    else {
+        mark = "Unmark";
+    }
     var items = {
         addItem: {
           label: "Add Item",
           action: function () {
             var newNode = tree.create_node(tree.get_selected(), "new node");
-            tree.get_node(newNode).data = { "create_date": new Date() };
+            tree.get_node(newNode).data = { "create_date": new Date(), "marked": false };
+            tree.set_icon(tree.get_node(newNode), '../img/folder.png');
           }
         },
         renameItem: { // The "rename" menu item
@@ -47,6 +56,19 @@ function customMenu(node) {
             label: "Delete",
             action: function () {
               tree.delete_node([node]);
+            }
+        },
+        markItem: { // Mark item so it doesn't show up in iterate, change icon, mark all children TODO
+            label: mark,
+            action: function () {
+                if(node.data.marked == true){
+                    node.data = {"marked": false};
+                    tree.set_icon(node, '../img/folder.png');
+                }
+                else {
+                    node.data = {"marked": true};
+                    tree.set_icon(node, '../img/red-x.png');
+                }
             }
         }
     };
