@@ -2,6 +2,7 @@ var whole;
 var allLeafs = [];
 var isRandom = true;
 var tree; //DO NOT MODIFY
+var day = 86400000;//millseconds in a day
 
 function initIterate() {
   toggleContainers();
@@ -54,17 +55,23 @@ function isLeaf(id){
 function iterateAll(){
   $("#allLeafs").toggleClass("hidden");
   $('#randomCheckbox').prop('checked', true); //random iteration by default
-  buildLeafArray();
+  buildLeafArray(null);
   nextNode(isRandom);
 };
 
-function buildLeafArray(){
+function buildLeafArray(date){
   allLeafs = [];
   for(var i in tree){
-    if(isLeaf(tree[i].id, tree) && !tree[i].data.marked){
+    if(isLeaf(tree[i].id, tree) && !tree[i].data.marked && date == null){
       allLeafs.push(tree[i]);
     }
+    else if (isLeaf(tree[i].id, tree) && !tree[i].data.marked && date != null) {
+        if ((tree[i].data.create_date >= date)){
+            allLeafs.push(tree[i]);
+        }
+    }
   }
+  console.log(allLeafs);
 };
 
 function next(){
@@ -96,6 +103,7 @@ function nextNode(r) {
 function toggleContainers(){
   $('#mainTree').toggleClass("hidden");
   $('#mainIterate').toggleClass("hidden");
+  $("#allLeafs").toggleClass("hidden");
 };
 
 //up to a third degree
@@ -131,26 +139,36 @@ function findParent(item){
 
 function random(){
   isRandom = $('#randomCheckbox').prop('checked');
-  buildLeafArray(); //rebuild whenever random mode is toggled
+  buildLeafArray(null); //rebuild whenever random mode is toggled
 };
 
-function leafsByDate(){
-
-};
-
-function byDateInit(period){ //remake the allLeafs array based on dates
-  switch (period){
-    case 'week':
-    break;
-    case 'oneMonth':
-    break;
-    case 'twoMonths':
-    break;
-    case 'threeMonths':
-    break;
-    case 'sixMonths':
-    break;
-    case 'year':
-    break;
-  }
+function byDateInit(period){
+    allLeafs = [];
+    var today = convertDate(new Date());
+    switch (period){
+        case 'week':
+            buildLeafArray(today - 7);
+            nextNode(isRandom);
+        break;
+        case 'oneMonth':
+            buildLeafArray(today - 30);
+            nextNode(isRandom);
+        break;
+        case 'twoMonths':
+            buildLeafArray(today - 60);
+            nextNode(isRandom);
+        break;
+        case 'threeMonths':
+            buildLeafArray(today - 90);
+            nextNode(isRandom);
+        break;
+        case 'sixMonths':
+            buildLeafArray(today - 180);
+            nextNode(isRandom);
+        break;
+        case 'year':
+            buildLeafArray(today - 365);
+            nextNode(isRandom);
+        break;
+    }
 };

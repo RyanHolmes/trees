@@ -44,7 +44,8 @@ function customMenu(node) {
           label: "Add Item",
           action: function () {
             var newNode = tree.create_node(tree.get_selected(), "new node");
-            tree.get_node(newNode).data = { "create_date": new Date(), "marked": false, "success": 0, "failure": 0 };
+            var today = new Date();
+            tree.get_node(newNode).data = { "create_date": convertDate(today), "marked": false, "success": 0, "failure": 0 };
             tree.set_icon(tree.get_node(newNode), '../img/folder.png');
           }
         },
@@ -64,11 +65,11 @@ function customMenu(node) {
             label: mark,
             action: function () {
                 if(node.data.marked == true){
-                    node.data = {"marked": false};
+                    node.data.marked = false;
                     tree.set_icon(node, '../img/folder.png');
                 }
                 else {
-                    node.data = {"marked": true};
+                    node.data.marked = true;
                     tree.set_icon(node, '../img/red-x.png');
                 }
             }
@@ -90,4 +91,8 @@ function save(){
     tree_data = v;
     $("#json_render").val(JSON.stringify(v))
   }
+};
+
+function convertDate(d){
+    return Math.round(d.getTime()/86400000);
 };
