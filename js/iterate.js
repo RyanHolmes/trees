@@ -1,4 +1,5 @@
 var allLeafs = [];
+var size = 1;
 var isRandom = true;
 var tree; //DO NOT MODIFY
 var day = 86400000;//millseconds in a day
@@ -57,10 +58,12 @@ function buildLeafArray(date){
   for(var i in tree){
     if( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date == null) ){
       allLeafs.push(tree[i]);
+      size = allLeafs.length;
     }
     else if ( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date != null) ) {
         if ((tree[i].data.create_date >= date)){
             allLeafs.push(tree[i]);
+            size = allLeafs.length;
         }
     }
   }
@@ -78,7 +81,8 @@ function nextNode(r) {
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
       $('#nodeGParent').text(path.gParent);
-      $('#progess').text("> " + (allLeafs.length - 1) + " Nodes Remaining");
+      $('#progress').text((allLeafs.length - 1) + " Nodes Remaining");
+      $('#progress').css('width', 100 - ((allLeafs.length - 1)/size*100) + '%');
       allLeafs.splice(firstItemIndex, 1);
     }
   }
@@ -87,7 +91,8 @@ function nextNode(r) {
     $('#nodeChild').text(path.child);
     $('#nodeParent').text(path.parent);
     $('#nodeGParent').text(path.gParent);
-    $('#progess').text("> " + (allLeafs.length - 1) + " Nodes Remaining");
+    $('#progress').text((allLeafs.length - 1) + " Nodes Remaining");
+    $('#progress').css('width', 100 - ((allLeafs.length - 1)/size*100) + '%');
     allLeafs.splice(0, 1);
   }
 };
