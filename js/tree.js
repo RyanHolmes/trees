@@ -22,9 +22,7 @@ $(document).ready(function(){
   $("#search-input").keyup(function() {
       var searchString = $(this).val();
       $('#tree').jstree('search', searchString);
-    });
-    //set icon of root TODO
-    // $('#tree').jstree(true).get_node('j1_1').set_icon('../img/folder.png');
+  });
 
 });
 
@@ -45,7 +43,7 @@ function customMenu(node) {
           action: function () {
             var newNode = tree.create_node(tree.get_selected(), "new node");
             var today = new Date();
-            tree.get_node(newNode).data = { "create_date": convertDate(today), "marked": false, "success": 0, "failure": 0 };
+            tree.get_node(newNode).data = { "create_date": convertDate(today), "marked": false, "success": 0, "failure": 0, "audio_path": null, "note": null, "other": null };
             tree.set_icon(tree.get_node(newNode), '../img/folder.png');
           }
         },
@@ -61,7 +59,7 @@ function customMenu(node) {
               tree.delete_node([node]);
             }
         },
-        markItem: { // mark all children TODO
+        markItem: { // mark all children TODO: bug - not working
             label: mark,
             action: function () {
                 if(node.data.marked == true){

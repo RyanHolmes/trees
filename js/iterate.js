@@ -1,4 +1,3 @@
-var whole;
 var allLeafs = [];
 var isRandom = true;
 var tree; //DO NOT MODIFY
@@ -6,14 +5,8 @@ var day = 86400000;//millseconds in a day
 
 function initIterate() {
   toggleContainers();
-  if (whole == null) {
-    v = $("#tree").jstree(true).get_json('#', { 'flat': true });
-    tree = v;
-    var root = findRoot(v);
-    var rootNode = new Node();
-    rootNode.create(root.id, root.text, []);
-    whole = buildChildren(rootNode);
-  }
+  v = $("#tree").jstree(true).get_json('#', { 'flat': true });
+  tree = v;
 };
 
 function buildChildren(node){
@@ -53,7 +46,7 @@ function isLeaf(id){
 };
 
 function iterateAll(){
-  $("#allLeafs").toggleClass("hidden");
+  // $("#allLeafs").toggleClass("hidden");
   $('#randomCheckbox').prop('checked', true); //random iteration by default
   buildLeafArray(null);
   nextNode(isRandom);
@@ -62,16 +55,15 @@ function iterateAll(){
 function buildLeafArray(date){
   allLeafs = [];
   for(var i in tree){
-    if(isLeaf(tree[i].id, tree) && !tree[i].data.marked && date == null){
+    if( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date == null) ){
       allLeafs.push(tree[i]);
     }
-    else if (isLeaf(tree[i].id, tree) && !tree[i].data.marked && date != null) {
+    else if ( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date != null) ) {
         if ((tree[i].data.create_date >= date)){
             allLeafs.push(tree[i]);
         }
     }
   }
-  console.log(allLeafs);
 };
 
 function next(){
@@ -103,7 +95,7 @@ function nextNode(r) {
 function toggleContainers(){
   $('#mainTree').toggleClass("hidden");
   $('#mainIterate').toggleClass("hidden");
-  $("#allLeafs").toggleClass("hidden");
+  // $("#allLeafs").toggleClass("hidden");
 };
 
 //up to a third degree
@@ -129,9 +121,11 @@ function getPath(item){
 };
 
 function findParent(item){
-  for(var i in tree){
-    if(tree[i].id == item.parent){
-      return tree[i];
+  if(item != null){
+    for(var i in tree){
+      if(tree[i].id == item.parent){
+        return tree[i];
+      }
     }
   }
   return null;
@@ -159,11 +153,11 @@ function byDateInit(period){
             nextNode(isRandom);
         break;
         case 'threeMonths':
-            buildLeafArray(today - 90);
+            buildLeafArray(today - 91);
             nextNode(isRandom);
         break;
         case 'sixMonths':
-            buildLeafArray(today - 180);
+            buildLeafArray(today - 182);
             nextNode(isRandom);
         break;
         case 'year':
