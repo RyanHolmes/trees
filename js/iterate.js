@@ -81,7 +81,7 @@ function nextNode(r) {
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
       $('#nodeGParent').text(path.gParent);
-      $('#progress').text((allLeafs.length - 1) + " Nodes Remaining");
+      $('#progress').text(size - (allLeafs.length - 1) + "/" + size);
       $('#progress').css('width', 100 - ((allLeafs.length - 1)/size*100) + '%');
       allLeafs.splice(firstItemIndex, 1);
     }

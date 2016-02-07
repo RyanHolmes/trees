@@ -59,7 +59,7 @@ function customMenu(node) {
               tree.delete_node([node]);
             }
         },
-        markItem: { // mark all children TODO: bug - not working
+        markItem: { // mark all children TODO
             label: mark,
             action: function () {
                 if(node.data.marked == true){
@@ -71,6 +71,13 @@ function customMenu(node) {
                     tree.set_icon(node, '../img/red-x.png');
                 }
             }
+        },
+        iterateItem: {
+          label: "Iterate",
+          action: function (){
+            // TODO takes you to iteration page and iterates on specific node's children
+            alert("TODO");
+          }
         }
     };
 
