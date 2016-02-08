@@ -16,15 +16,17 @@
   color: gray;
 }
 
-.dropDownElt{
+.dropDownElt {
   cursor: pointer;
   padding-left: 10px;
 }
 
-.dropDownElt:hover{
+.dropDownElt:hover {
   background-color: grey;
 }
 
-/*#mainIterate {
-  text-overflow: ellipsis;
-}*/
+.hideOverflow {
+    overflow: scroll;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
