@@ -175,3 +175,9 @@ function byDateInit(period){
 function showAnswer(){
   alert("TODO");
 };
+
+function addNote() {
+  var tree = $('#tree').jstree(true);
+  var node = tree.get_node(tree.get_selected());
+  node.data.note = $('#modalNote').val();
+};
