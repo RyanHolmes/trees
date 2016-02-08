@@ -3,6 +3,7 @@ var size = 1;
 var isRandom = true;
 var tree; //DO NOT MODIFY
 var day = 86400000;//millseconds in a day
+var currentNode;
 
 function initIterate() {
   toggleContainers();
@@ -74,9 +75,11 @@ function next(){
 };
 
 function nextNode(r) {
+  $('#hiddenAnswer').addClass('hidden');
   if(r){
     if(allLeafs.length > 0){
       var firstItemIndex = Math.floor((Math.random() * (allLeafs.length - 1)));
+      currentNode = allLeafs[firstItemIndex];
       var path = getPath(allLeafs[firstItemIndex]);
       $('#nodeChild').text(path.child);
       $('#nodeParent').text(path.parent);
@@ -87,6 +90,7 @@ function nextNode(r) {
     }
   }
   else if (!r) { //ordered iteration
+    currentNode = allLeafs[0];
     var path = getPath(allLeafs[0]);
     $('#nodeChild').text(path.child);
     $('#nodeParent').text(path.parent);
@@ -173,7 +177,8 @@ function byDateInit(period){
 };
 
 function showAnswer(){
-  alert("TODO");
+  $('#hiddenAnswer').removeClass('hidden');
+  $('#noteToShow').text(currentNode.data.note);
 };
 
 function addNote() {

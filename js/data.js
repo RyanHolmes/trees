@@ -211,7 +211,7 @@ function getData() {
         },
         "state": {
             "loaded": true,
-            "opened": false,
+            "opened": true,
             "selected": false,
             "disabled": false
         },
@@ -240,7 +240,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": false,
-            "selected": false,
+            "selected": true,
             "disabled": false
         },
         "data": {
@@ -249,7 +249,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: Emulates Calligraphy, Some stoke contrast\nFeel: Classic/traditional\nApplication: Journalism/Historic",
             "other": null
         },
         "parent": "j1_11"
@@ -772,7 +772,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": false,
-            "selected": true,
+            "selected": false,
             "disabled": false
         },
         "data": {
