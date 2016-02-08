@@ -94,7 +94,7 @@ function save(){
   if(tree != null){
     v = $("#tree").jstree(true).get_json('#', { 'flat': true });
     tree_data = v;
-    $("#json_render").val(JSON.stringify(v, null, 4))
+    $("#json_render").text(JSON.stringify(v, null, 4));
   }
 };
 
