@@ -171,3 +171,7 @@ function byDateInit(period){
         break;
     }
 };
+
+function showAnswer(){
+  alert("TODO");
+};

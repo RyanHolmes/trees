@@ -90,6 +90,7 @@ function customMenu(node) {
           label: "Note",
           action: function (){
             alert("TODO");
+            tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
           }
         }
     };
