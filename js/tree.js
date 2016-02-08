@@ -3,7 +3,6 @@ var tree_data;
 $(document).ready(function(){
   $("#json_render").width($("#mainTree").width())
   var obj = getData();
-  tree_data = obj;
 
   $('#tree').jstree({
     'core' : {
@@ -23,6 +22,8 @@ $(document).ready(function(){
       var searchString = $(this).val();
       $('#tree').jstree('search', searchString);
   });
+
+  tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
 
 });
 
@@ -46,18 +47,21 @@ function customMenu(node) {
             var today = new Date();
             tree.get_node(newNode).data = { "create_date": convertDate(today), "marked": false, "success": 0, "failure": 0, "audio_path": null, "note": null, "other": null };
             tree.set_icon(tree.get_node(newNode), '../img/folder.png');
+            tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true }); //update tree when node is created
           }
         },
         renameItem: { // The "rename" menu item
             label: "Rename",
             action: function () {
               tree.edit(node);
+              tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
             }
         },
         deleteItem: { // The "delete" menu item
             label: "Delete",
             action: function () {
               tree.delete_node([node]);
+              tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
             }
         },
         markItem: { // mark all children TODO
@@ -66,17 +70,25 @@ function customMenu(node) {
                 if(node.data.marked == true){
                     node.data.marked = false;
                     tree.set_icon(node, '../img/folder.png');
+                    tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
                 }
                 else {
                     node.data.marked = true;
                     tree.set_icon(node, '../img/red-x.png');
+                    tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
                 }
             }
         },
         iterateItem: {
           label: "Iterate",
           action: function (){
-            // TODO takes you to iteration page and iterates on specific node's children
+            // TODO takes you to iteration page and iterates on specific node's children - wont work on leaf
+            alert("TODO");
+          }
+        },
+        noteItem: {
+          label: "Note",
+          action: function (){
             alert("TODO");
           }
         }
@@ -85,6 +97,7 @@ function customMenu(node) {
     if ($(node).hasClass("folder")) {
         // Delete the "delete" menu item
         delete items.deleteItem;
+        tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
     }
 
     return items;
@@ -94,7 +107,7 @@ function save(){
   var tree = $('#tree').jstree(true);
   if(tree != null){
     v = $("#tree").jstree(true).get_json('#', { 'flat': true });
-    tree_data = v;
+    tree_data = $("#tree").jstree(true).get_json('#', { 'flat': true });
     $("#json_render").text(JSON.stringify(v, null, 4));
   }
 };
