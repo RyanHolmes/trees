@@ -28,6 +28,7 @@ $(document).ready(function(){
 
 function customMenu(node) {
     // The default set of all items
+    //TODO make leafs different icon, same with def's and formulas -> call it a type category - in create?
     var tree = $('#tree').jstree(true);
     var node = tree.get_node(tree.get_selected());
     var mark = "";
