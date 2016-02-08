@@ -24,3 +24,7 @@
 .dropDownElt:hover{
   background-color: grey;
 }
+
+/*#mainIterate {
+  text-overflow: ellipsis;
+}*/
