@@ -208,9 +208,9 @@ function markItem(){
   nextNode(isRandom);
 };
 
-// TODO: download stuff
+// TODO: download stuff - text content
 function createFile(){
-  makeTextFile('text', 'name');
+  makeTextFile('text', $('#downloadName').text());
   // $('#createNotice').removeClass('hidden');
 };
 
@@ -218,5 +218,5 @@ function makeTextFile(text, name){
   var link = document.getElementById('downloadlink');
   var data = new Blob([text], {type: 'text/plain'});
   link.href = URL.createObjectURL(data);
-  link.download = "poo.txt";
+  link.download = name;
 };
