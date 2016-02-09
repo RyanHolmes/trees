@@ -82,9 +82,13 @@ function customMenu(node) {
         noteItem: {
           label: "Note",
           action: function (){
+            $('#modalNote').val("");
             $('#modalTitle').text(node.text + " ~Note");
             if(node.data.note != null){
-              $('#modalNote').text(node.data.note);
+              $('#modalNote').val(node.data.note);
+            }
+            else if(node.data.note == null){
+              $('#modalNote').val("");
             }
             $('#modalForNote').modal('show');
           }

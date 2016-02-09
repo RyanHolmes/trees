@@ -240,7 +240,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": false,
-            "selected": true,
+            "selected": false,
             "disabled": false
         },
         "data": {
@@ -277,7 +277,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: Sharper serifs, more stroke contrast\nFeel: Strong, stylish, dynamic\nApplication: legal, acedemic",
             "other": null
         },
         "parent": "j1_11"
@@ -296,7 +296,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": false,
-            "selected": false,
+            "selected": true,
             "disabled": false
         },
         "data": {
