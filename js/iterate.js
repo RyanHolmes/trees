@@ -207,3 +207,16 @@ function markItem(){
   $('#tree').jstree(true).set_icon($('#tree').jstree(true).get_node(currentNode.id), '../img/red-x.png');
   nextNode(isRandom);
 };
+
+// TODO: download stuff
+function createFile(){
+  makeTextFile('text', 'name');
+  $('#createNotice').removeClass('hidden');
+};
+
+function makeTextFile(text, name){
+  var link = document.getElementById('downloadlink');
+  var data = new Blob([text], {type: 'text/plain'});
+  link.href = URL.createObjectURL(data);
+  link.download = "poo.txt";
+};

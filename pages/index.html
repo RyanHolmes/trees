@@ -48,7 +48,6 @@
 			    </ul>
 			  </div>
 			</nav>
-
 			<div class="row" id="tree">
 
 			<!--  LOADS JSON DATA-->
@@ -176,11 +175,16 @@
 		        <h3 class="modal-title" id="modalDownloadTitle"></h3>
 		      </div>
 		      <div class="modal-body">
-						<textarea id="downloadName" style="width:100%;"> Note.txt </textarea>
+						<div class="alert alert-success fade in hidden" id="createNotice">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						  <strong>Success!</strong> Indicates a successful or positive action.
+						</div>
+						<textarea id="downloadName" style="width:100%;"> </textarea>
 		      </div>
 		      <div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-info" data-dismiss="modal" onclick="download();">Download</button>
+						<button type="button" class="btn btn-info" onclick="createFile();"> Create File </button>
+						<button type="button" class="btn btn-info" data-dismiss="modal"> <a download="" id="downloadlink"> Download File </a> </button>
 		      </div>
 		    </div>
 
