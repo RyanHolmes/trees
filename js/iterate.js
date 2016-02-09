@@ -204,6 +204,7 @@ function success(){
 
 function failure(){
   currentNode.data.failure += 1;
+  nextNode(isRandom);
 };
 
 function markItem(){

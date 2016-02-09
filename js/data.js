@@ -211,7 +211,7 @@ function getData() {
         },
         "state": {
             "loaded": true,
-            "opened": true,
+            "opened": false,
             "selected": false,
             "disabled": false
         },
@@ -296,7 +296,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": false,
-            "selected": true,
+            "selected": false,
             "disabled": false
         },
         "data": {
@@ -305,7 +305,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: thin horizontal serifs, very high stroke contrast\nFeel: structured, clear, elegant\nApplication: arts, culture",
             "other": null
         },
         "parent": "j1_11"
@@ -333,7 +333,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: heavy boxy serifs, low/no stroke contrast\nFeel: authoritative yet friendly\nApplication: marketing, promotions",
             "other": null
         },
         "parent": "j1_11"
@@ -389,7 +389,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: emulates calligraphy, little stroke contrast\nFeel: tension between perfect and imperfect\nApplication: government, education, finance",
             "other": null
         },
         "parent": "j1_12"
@@ -417,7 +417,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: strong strokes, upright uniform characters\nFeel: unassuming, modern\nApplication: technology, transportion",
             "other": null
         },
         "parent": "j1_12"
@@ -445,7 +445,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Attributes: letters made up of shapes\nFeel: strict, objective, universal\nApplication: science, architecture ",
             "other": null
         },
         "parent": "j1_12"
@@ -473,7 +473,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Pros: adds a human element\nCons: not useful for large blocks of text",
             "other": null
         },
         "parent": "j1_9"
@@ -491,7 +491,7 @@ function getData() {
         },
         "state": {
             "loaded": true,
-            "opened": false,
+            "opened": true,
             "selected": false,
             "disabled": false
         },
@@ -529,7 +529,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "1) Humanist serif mixed with humanist san-serif. Similar but different class\n2) Contrast over harmony: keep same or change drastically. ex) Geometric and script\n3) To keeps things simple you can opt to use only a single typeface. \n",
             "other": null
         },
         "parent": "j1_14"
@@ -557,7 +557,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "1) Don't pick same style fonts - they clash. \n2) Don't picks two from same class. ex) Two serif fonts",
             "other": null
         },
         "parent": "j1_14"
@@ -575,7 +575,7 @@ function getData() {
         },
         "state": {
             "loaded": true,
-            "opened": false,
+            "opened": true,
             "selected": false,
             "disabled": false
         },
@@ -613,7 +613,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "What: Size of regular font on webpage\n- typically 16px\n- other items (headers, nav etc) are based on this size",
             "other": null
         },
         "parent": "j1_15"
@@ -641,7 +641,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "300% of body copy size (usually)",
             "other": null
         },
         "parent": "j1_15"
@@ -669,7 +669,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "150% of body copy size (usually)",
             "other": null
         },
         "parent": "j1_15"
@@ -697,7 +697,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Same as body copy size",
             "other": null
         },
         "parent": "j1_15"
@@ -725,7 +725,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "Definition: Footers and dates\nSize: 75% of body copy size (usually)",
             "other": null
         },
         "parent": "j1_15"
@@ -753,7 +753,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "What: Spacing between text lines\nSize: typically 120-150% of body copy\nCSS: line-height: 1.5;",
             "other": null
         },
         "parent": "j1_9"
@@ -781,7 +781,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "One extra word at the end of a paragraph. Not a good thing from a design perspective.",
             "other": null
         },
         "parent": "j1_9"
@@ -809,7 +809,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "One extra line on a new page. Not a good thing from a design perspective.",
             "other": null
         },
         "parent": "j1_9"
@@ -828,7 +828,7 @@ function getData() {
         "state": {
             "loaded": true,
             "opened": true,
-            "selected": false,
+            "selected": true,
             "disabled": false
         },
         "data": {
@@ -837,7 +837,7 @@ function getData() {
             "success": 0,
             "failure": 0,
             "audio_path": null,
-            "note": null,
+            "note": "What: Characters/line\nAmount: 30-70 is ideal\nCSS: max-width: blah;",
             "other": null
         },
         "parent": "j1_9"
