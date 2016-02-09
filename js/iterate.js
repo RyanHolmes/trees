@@ -211,7 +211,7 @@ function markItem(){
 // TODO: download stuff
 function createFile(){
   makeTextFile('text', 'name');
-  $('#createNotice').removeClass('hidden');
+  // $('#createNotice').removeClass('hidden');
 };
 
 function makeTextFile(text, name){
