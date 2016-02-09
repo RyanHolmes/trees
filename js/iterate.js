@@ -192,7 +192,7 @@ function addNote() {
 function success(){
   if(hasSuccess == false){
     currentNode.data.success += 1;
-    if (currentNode.data.success >= 1){ //RYANTODO value has to be set somewhere
+    if (currentNode.data.success >= 30){ //RYANTODO value has to be set somewhere
       $('#modalForSuccess').modal('show');
     }
     else {

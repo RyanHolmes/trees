@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 function customMenu(node) {
     // The default set of all items
-    //TODO make leafs different icon, same with def's and formulas -> call it a type category - in create?
+    //RYANTODO make leafs different icon, same with def's and formulas -> call it a type category - in create?
     var tree = $('#tree').jstree(true);
     var node = tree.get_node(tree.get_selected());
     var mark = "";
@@ -59,7 +59,7 @@ function customMenu(node) {
               tree.delete_node([node]);
             }
         },
-        markItem: { // mark all children TODO
+        markItem: { // mark all children RYANTODO
             label: mark,
             action: function () {
                 if(node.data.marked == true){
@@ -75,8 +75,8 @@ function customMenu(node) {
         iterateItem: {
           label: "Iterate",
           action: function (){
-            // TODO takes you to iteration page and iterates on specific node's children - wont work on leaf
-            alert("TODO");
+            // RYANTODO takes you to iteration page and iterates on specific node's children - wont work on leaf
+            alert("Iterate");
           }
         },
         noteItem: {
