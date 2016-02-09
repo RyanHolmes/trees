@@ -3,6 +3,7 @@ $(document).ready(function(){
   var obj = getData();
   $('#modalForNote').modal({ show: false});
   $('#modalForSuccess').modal({ show: false});
+  $('#modalForDownload').modal({ show: false});
 
   $('#tree').jstree({
     'core' : {
@@ -83,7 +84,7 @@ function customMenu(node) {
           label: "Note",
           action: function (){
             $('#modalNote').val("");
-            $('#modalTitle').text(node.text + " ~Note");
+            $('#modalNoteTitle').text(node.text + " ~Note");
             if(node.data.note != null){
               $('#modalNote').val(node.data.note);
             }
@@ -91,6 +92,14 @@ function customMenu(node) {
               $('#modalNote').val("");
             }
             $('#modalForNote').modal('show');
+          }
+        },
+        downloadItem: {
+          label: "Download", //RYANTODO: make data useful for user
+          action: function() {
+            $('#modalDownloadTitle').text(node.text + " Download");
+            $('#downloadName').text(node.text.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + ".txt");
+            $('#modalForDownload').modal('show');
           }
         }
     };
