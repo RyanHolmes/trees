@@ -16,10 +16,10 @@ function buildChildren(node){
   for(var i in tree) {
     if(tree[i].parent == node.id) {
       var tempNode = new Node();
-      tempNode.create(tree[i].id, tree[i].text, []);
+      tempNode.create(tree[i].id, tree[i].text, [], tree[i].note);
       node.children.push(tempNode);
       if(!isLeaf(tempNode.id, tree)){
-        buildChildren(tempNode, tree);
+        buildChildren(tempNode);
       }
     }
   }
@@ -178,18 +178,16 @@ function byDateInit(period){
 
 function showAnswer(){
   $('#hiddenAnswer').removeClass('hidden');
-  $('#noteToShow').text(currentNode.data.note);
+  $('#noteToShow').text(getTree().selected.data.note);
 };
 
 function addNote() {
-  var tree = $('#tree').jstree(true);
-  var node = tree.get_node(tree.get_selected());
-  node.data.note = $('#modalNote').val();
+  getTree().selected.data.note = $('#modalNote').val();
 };
 
 function success(){
-    $('#tree').jstree(true).get_node(currentNode.id).data.success += 1;
-    if ($('#tree').jstree(true).get_node(currentNode.id).data.success >= 30){ //RYANTODO value has to be set somewhere
+    $('#tree').jstree(true).get_node(getTree().selected.id).data.success += 1;
+    if ($('#tree').jstree(true).get_node(getTree().selected.id).data.success >= 30){ //RYANTODO value has to be set somewhere
       $('#modalForSuccess').modal('show');
     }
     else {
@@ -198,18 +196,24 @@ function success(){
 };
 
 function failure(){
-  $('#tree').jstree(true).get_node(currentNode.id).data.failure += 1;
+  getTree().selected.data.failure += 1;
   nextNode(isRandom);
 };
 
 function markItem(){
-  $('#tree').jstree(true).get_node(currentNode.id).data.marked = true;
-  $('#tree').jstree(true).set_icon($('#tree').jstree(true).get_node(currentNode.id), '../img/red-x.png');
+  getTree().selected.data.marked = true;
+  getTree.tree.set_icon(getTree().selected, '../img/red-x.png');
   nextNode(isRandom);
 };
 
 // TODO: download stuff - text content
 function createFile(){
+  var e = getTree().selected;
+  var tempNode = new Node();
+  tempNode.create(e.id, e.text, [], e.note);
+  var m = buildChildren(tempNode);
+
+  console.log(m);
   makeTextFile('text', $('#downloadName').text());
   // $('#createNotice').removeClass('hidden');
 };
