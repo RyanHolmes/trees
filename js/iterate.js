@@ -4,6 +4,7 @@ var isRandom = true;
 var tree; //DO NOT MODIFY
 var day = 86400000;//millseconds in a day
 var currentNode;
+var hasSuccess = false;
 
 function initIterate() {
   toggleContainers();
@@ -76,6 +77,7 @@ function next(){
 
 function nextNode(r) {
   $('#hiddenAnswer').addClass('hidden');
+  hasSuccess = false;
   if(r){
     if(allLeafs.length > 0){
       var firstItemIndex = Math.floor((Math.random() * (allLeafs.length - 1)));
@@ -185,4 +187,27 @@ function addNote() {
   var tree = $('#tree').jstree(true);
   var node = tree.get_node(tree.get_selected());
   node.data.note = $('#modalNote').val();
+};
+
+function success(){
+  if(hasSuccess == false){
+    currentNode.data.success += 1;
+    if (currentNode.data.success >= 1){ //RYANTODO value has to be set somewhere
+      $('#modalForSuccess').modal('show');
+    }
+    else {
+      nextNode(isRandom);
+    }
+  }
+  hasSuccess = true;
+};
+
+function failure(){
+  currentNode.data.failure += 1;
+};
+
+function markItem(){
+  $('#tree').jstree(true).get_node(currentNode.id).data.marked = true;
+  $('#tree').jstree(true).set_icon($('#tree').jstree(true).get_node(currentNode.id), '../img/red-x.png');
+  nextNode(isRandom);
 };

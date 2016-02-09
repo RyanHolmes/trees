@@ -1,7 +1,8 @@
 $(document).ready(function(){
   $("#json_render").width($("#mainTree").width())
   var obj = getData();
-  $('#myModal').modal({ show: false});
+  $('#modalForNote').modal({ show: false});
+  $('#modalForSuccess').modal({ show: false});
 
   $('#tree').jstree({
     'core' : {
@@ -78,14 +79,14 @@ function customMenu(node) {
             alert("TODO");
           }
         },
-        noteItem: { 
+        noteItem: {
           label: "Note",
           action: function (){
             $('#modalTitle').text(node.text + " ~Note");
             if(node.data.note != null){
               $('#modalNote').text(node.data.note);
             }
-            $('#myModal').modal('show');
+            $('#modalForNote').modal('show');
           }
         }
     };
