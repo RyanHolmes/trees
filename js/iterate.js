@@ -191,8 +191,8 @@ function addNote() {
 
 function success(){
   if(hasSuccess == false){
-    currentNode.data.success += 1;
-    if (currentNode.data.success >= 30){ //RYANTODO value has to be set somewhere
+    $('#tree').jstree(true).get_node(currentNode.id).data.success += 1;
+    if ($('#tree').jstree(true).get_node(currentNode.id).data.success >= 30){ //RYANTODO value has to be set somewhere
       $('#modalForSuccess').modal('show');
     }
     else {
@@ -203,7 +203,7 @@ function success(){
 };
 
 function failure(){
-  currentNode.data.failure += 1;
+  $('#tree').jstree(true).get_node(currentNode.id).data.failure += 1;
   nextNode(isRandom);
 };
 
