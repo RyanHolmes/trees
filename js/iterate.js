@@ -1,10 +1,3 @@
-var allLeafs = [];
-var size = 1;
-var isRandom = true;
-var tree; //DO NOT MODIFY
-var day = 86400000;//millseconds in a day
-var currentNode;
-
 function initIterate() {
   toggleContainers();
   v = $("#tree").jstree(true).get_json('#', { 'flat': true });
@@ -101,12 +94,6 @@ function nextNode(r) {
   }
 };
 
-function toggleContainers(){
-  $('#mainTree').toggleClass("hidden");
-  $('#mainIterate').toggleClass("hidden");
-  // $("#allLeafs").toggleClass("hidden");
-};
-
 //up to a third degree
 function getPath(item){
   if (item != null){
@@ -178,7 +165,7 @@ function byDateInit(period){
 
 function showAnswer(){
   $('#hiddenAnswer').removeClass('hidden');
-  $('#noteToShow').text(getTree().selected.data.note);
+  $('#noteToShow').text(getNode().data.note);
 };
 
 function addNote() {
@@ -186,8 +173,8 @@ function addNote() {
 };
 
 function success(){
-    $('#tree').jstree(true).get_node(getTree().selected.id).data.success += 1;
-    if ($('#tree').jstree(true).get_node(getTree().selected.id).data.success >= 30){ //RYANTODO value has to be set somewhere
+    getNode().data.success += 1;
+    if (getNode().data.success >= 30){ //RYANTODO value has to be set somewhere
       $('#modalForSuccess').modal('show');
     }
     else {
@@ -196,7 +183,7 @@ function success(){
 };
 
 function failure(){
-  getTree().selected.data.failure += 1;
+  getNode().data.failure += 1;
   nextNode(isRandom);
 };
 
@@ -214,7 +201,7 @@ function createFile(){
   var m = buildChildren(tempNode);
 
   console.log(m);
-  makeTextFile('text', $('#downloadName').text());
+  makeTextFile(JSON.stringify(m), $('#downloadName').text());
   // $('#createNotice').removeClass('hidden');
 };
 
