@@ -1,4 +1,5 @@
 var allLeafs = [];
+var nodeLeafs = [];
 var size = 1;
 var isRandom = true;
 var tree; //DO NOT MODIFY

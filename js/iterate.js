@@ -94,7 +94,7 @@ function nextNode(r) {
 };
 
 //up to a third degree
-function getPath(item){
+function getPath(item){ //RYANTODO redo with get path
   if (item != null){
     var child = "> " + item.text;
     var parent = findParent(item);
@@ -196,5 +196,22 @@ function iterateOnNode(){ //build leaf array around one node
 };
 
 function reduceLeafs(selected_node){
-  //allLeafs + selected_node.id = boo ya
+  var val = getTree().selected.text;
+  console.log(val);
+  console.log("---------------");
+  var tempArray = [];
+  for(var i in allLeafs){
+    var path = getTree().tree.get_path(getTree().tree.get_node(allLeafs[i].id));
+    console.log(path)
+    for(var x in path ){
+      if(path[x] == val){
+        tempArray.push(allLeafs[i]);
+      }
+    }
+  }
+  allLeafs = tempArray;
+  size = allLeafs.length;
+  nextNode(isRandom);
+  // console.log(getTree().tree.get_path(getTree().selected));
+  // console.log(allLeafs);
 };
