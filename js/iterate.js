@@ -189,5 +189,12 @@ function markItem(){
 };
 
 function iterateOnNode(){ //build leaf array around one node
+  initIterate();
+  buildLeafArray(null);
+  //RYANTODO modify leaf array based on current node
+  reduceLeafs(getTree().selected)
+};
 
+function reduceLeafs(selected_node){
+  //allLeafs + selected_node.id = boo ya
 };
