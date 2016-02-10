@@ -231,3 +231,7 @@ function doneIteration() {
   $('#reportSuccess').css('width',(localSuccess / (localSuccess + localFailure) * 100) + "%");
   $('#report').removeClass('hidden');
 };
+
+function restart(){
+  console.log("not done yet");
+};

@@ -1,6 +1,6 @@
 // ################################################################################################
 // TODO LIST
-// 1) can click suc/fail multiple times on final node iteration
+// 1) restart button
 // 2) Redo getPath fn to use tree.get_path
 // 3) Changes .txt download to a beautiful pdf
 // 4) Different Icons for different types of notes
