@@ -126,13 +126,13 @@ function createFile(){
 
   var j = flatten(m);
   var str = '';
-  for(var i in j){
-    if(j[i] != null || j[i] != []){
-      str += j[i] + "\n";
-      console.log(j[i]);
+  $.each(j, function(key, value){
+    if((key.indexOf('text') > -1 || key.indexOf('note') > -1) && (value != null || value != [])){
+      str += value;
+      str += '\n';
     }
-  }
-// JSON.stringify(flatten(m))
+  });
+
   makeTextFile(str, $('#downloadName').text());
 };
 
