@@ -64,10 +64,12 @@ function customMenu(node) {
                 if(getTree().selected.data.marked == true){
                     getTree().selected.data.marked = false;
                     getTree().tree.set_icon(node, '../img/folder.png');
+                    nestedMark(getTree().selected, false, '../img/folder.png');
                 }
                 else {
                     getTree().selected.data.marked = true;
                     getTree().tree.set_icon(node, '../img/red-x.png');
+                    nestedMark(getTree().selected, true, '../img/red-x.png');
                 }
             }
         },
@@ -92,7 +94,7 @@ function customMenu(node) {
           }
         },
         downloadItem: {
-          label: "Download", 
+          label: "Download",
           action: function() {
             $('#modalDownloadTitle').text(getTree().selected.text + " Download");
             $('#downloadName').text(getTree().selected.text.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + ".txt");
@@ -145,4 +147,17 @@ function makeTextFile(text, name){
 
 function addNote() {
   getTree().selected.data.note = $('#modalNote').val();
+};
+
+function nestedMark(node, mark, icon){
+  var t = getTree().tree.get_json('#', { 'flat': true });
+   for(var i in t){
+    if(t[i].parent == node.id){
+      getTree().tree.get_node(t[i].id).data.marked = mark;
+      getTree().tree.set_icon(getTree().tree.get_node(t[i].id), icon);
+      if(!isLeaf(t[i].id)){
+        nestedMark(t[i], mark, icon);
+      }
+    }
+   }
 };
