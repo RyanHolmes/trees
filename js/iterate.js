@@ -52,6 +52,9 @@ function iterateAll(){
 function buildLeafArray(date){
   localFailure = 0;
   localSuccess = 0;
+  $('#successBtn').prop('disabled', false);
+  $('#failureBtn').prop('disabled', false);
+  $('#report').addClass('hidden');
   allLeafs = [];
   for(var i in tree){
     if( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date == null) ){
@@ -221,6 +224,10 @@ function reduceLeafs(selected_node){
 };
 
 function doneIteration() {
-  console.log("failure: " + localFailure);
-  console.log("success: " + localSuccess);
+  // disable buttons
+  $('#successBtn').prop('disabled', true);
+  $('#failureBtn').prop('disabled', true);
+  $('#reportFailure').css('width', (localFailure / (localFailure + localSuccess) * 100) + "%");
+  $('#reportSuccess').css('width',(localSuccess / (localSuccess + localFailure) * 100) + "%");
+  $('#report').removeClass('hidden');
 };
