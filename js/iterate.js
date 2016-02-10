@@ -9,9 +9,9 @@ function buildChildren(node){
   for(var i in tree) {
     if(tree[i].parent == node.id) {
       var tempNode = new Node();
-      tempNode.create(tree[i].id, tree[i].text, [], tree[i].note);
+      tempNode.create(tree[i].id, tree[i].text, [], tree[i].data.note);
       node.children.push(tempNode);
-      if(!isLeaf(tempNode.id, tree)){
+      if(!isLeaf(tempNode.id)){
         buildChildren(tempNode);
       }
     }
@@ -41,7 +41,6 @@ function isLeaf(id){
 };
 
 function iterateAll(){
-  // $("#allLeafs").toggleClass("hidden");
   $('#randomCheckbox').prop('checked', true); //random iteration by default
   buildLeafArray(null);
   nextNode(isRandom);
@@ -168,10 +167,6 @@ function showAnswer(){
   $('#noteToShow').text(getNode().data.note);
 };
 
-function addNote() {
-  getTree().selected.data.note = $('#modalNote').val();
-};
-
 function success(){
     getNode().data.success += 1;
     if (getNode().data.success >= 30){ //RYANTODO value has to be set somewhere
@@ -193,21 +188,6 @@ function markItem(){
   nextNode(isRandom);
 };
 
-// TODO: download stuff - text content
-function createFile(){
-  var e = getTree().selected;
-  var tempNode = new Node();
-  tempNode.create(e.id, e.text, [], e.note);
-  var m = buildChildren(tempNode);
+function iterateOnNode(){ //build leaf array around one node
 
-  console.log(m);
-  makeTextFile(JSON.stringify(m), $('#downloadName').text());
-  // $('#createNotice').removeClass('hidden');
-};
-
-function makeTextFile(text, name){
-  var link = document.getElementById('downloadlink');
-  var data = new Blob([text], {type: 'text/plain'});
-  link.href = URL.createObjectURL(data);
-  link.download = name;
 };

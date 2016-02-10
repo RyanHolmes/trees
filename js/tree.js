@@ -74,8 +74,7 @@ function customMenu(node) {
         iterateItem: {
           label: "Iterate",
           action: function (){
-            // RYANTODO takes you to iteration page and iterates on specific node's children - wont work on leaf
-            alert("Iterate");
+            iterateOnNode(getTree().selected);
           }
         },
         noteItem: {
@@ -118,6 +117,32 @@ function save(){
   }
 };
 
-function convertDate(d){
-    return Math.round(d.getTime()/86400000);
+function createFile(){
+  tree = $("#tree").jstree(true).get_json('#', { 'flat': true });
+  var e = getTree().selected;
+  var tempNode = new Node();
+  tempNode.create(e.id, e.text, [], e.note);
+  var m = buildChildren(tempNode);
+
+  var j = flatten(m);
+  var str = '';
+  for(var i in j){
+    if(j[i] != null || j[i] != []){
+      str += j[i] + "\n";
+      console.log(j[i]);
+    }
+  }
+// JSON.stringify(flatten(m))
+  makeTextFile(str, $('#downloadName').text());
+};
+
+function makeTextFile(text, name){
+  var link = document.getElementById('downloadlink');
+  var data = new Blob([text], {type: 'text/plain'});
+  link.href = URL.createObjectURL(data);
+  link.download = name;
+};
+
+function addNote() {
+  getTree().selected.data.note = $('#modalNote').val();
 };
