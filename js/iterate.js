@@ -191,18 +191,14 @@ function markItem(){
 function iterateOnNode(){ //build leaf array around one node
   initIterate();
   buildLeafArray(null);
-  //RYANTODO modify leaf array based on current node
   reduceLeafs(getTree().selected)
 };
 
 function reduceLeafs(selected_node){
   var val = getTree().selected.text;
-  console.log(val);
-  console.log("---------------");
   var tempArray = [];
   for(var i in allLeafs){
     var path = getTree().tree.get_path(getTree().tree.get_node(allLeafs[i].id));
-    console.log(path)
     for(var x in path ){
       if(path[x] == val){
         tempArray.push(allLeafs[i]);

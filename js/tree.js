@@ -92,7 +92,7 @@ function customMenu(node) {
           }
         },
         downloadItem: {
-          label: "Download", //RYANTODO: make data useful for user
+          label: "Download", 
           action: function() {
             $('#modalDownloadTitle').text(getTree().selected.text + " Download");
             $('#downloadName').text(getTree().selected.text.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + ".txt");

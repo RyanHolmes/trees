@@ -1,3 +1,14 @@
+// ################################################################################################
+// TODO LIST
+// 1) Nested Marking for folders
+// 2) Redo getPath fn to use tree.get_path
+// 3) Changes .txt download to a beautiful pdf
+// 4) Different Icons for different types of notes
+// 5) Dashboard for user stats / homepage
+// 6) Settings panel -> how many successes unitl mark? custom user set icons? etc
+// ################################################################################################
+
+
 var allLeafs = [];
 var nodeLeafs = [];
 var size = 1;
