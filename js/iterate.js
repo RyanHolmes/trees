@@ -1,3 +1,6 @@
+var localSuccess = 0;
+var localFailure = 0;
+
 function initIterate() {
   toggleContainers();
   v = $("#tree").jstree(true).get_json('#', { 'flat': true });
@@ -47,6 +50,8 @@ function iterateAll(){
 };
 
 function buildLeafArray(date){
+  localFailure = 0;
+  localSuccess = 0;
   allLeafs = [];
   for(var i in tree){
     if( (isLeaf(tree[i].id, tree)) && (tree[i].data.marked == false) && (date == null) ){
@@ -67,6 +72,9 @@ function next(){
 };
 
 function nextNode(r) {
+  if(allLeafs.length == 0){
+    doneIteration();
+  }
   $('#hiddenAnswer').addClass('hidden');
   if(r){
     if(allLeafs.length > 0){
@@ -169,6 +177,7 @@ function showAnswer(){
 
 function success(){
     getNode().data.success += 1;
+    localSuccess += 1;
     if (getNode().data.success >= 30){ //RYANTODO value has to be set somewhere
       $('#modalForSuccess').modal('show');
     }
@@ -179,6 +188,7 @@ function success(){
 
 function failure(){
   getNode().data.failure += 1;
+  localFailure += 1;
   nextNode(isRandom);
 };
 
@@ -208,6 +218,9 @@ function reduceLeafs(selected_node){
   allLeafs = tempArray;
   size = allLeafs.length;
   nextNode(isRandom);
-  // console.log(getTree().tree.get_path(getTree().selected));
-  // console.log(allLeafs);
+};
+
+function doneIteration() {
+  console.log("failure: " + localFailure);
+  console.log("success: " + localSuccess);
 };
