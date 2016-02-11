@@ -61,3 +61,20 @@ function flatten(data) {
     recurse(data, "");
     return result;
 };
+
+window.onkeyup = function(e) {
+  if($('#successBtn').prop('disabled') == false && $('#mainIterate').hasClass('hidden') == false){
+     var key = e.keyCode ? e.keyCode : e.which;
+
+     if (key == 39) {
+       failure();
+       console.log('fail');
+     }else if (key == 37) {
+       success();
+       console.log('suc');
+     }else if (key == 38) {
+       showAnswer();
+       console.log('sa');
+     }
+   }
+}

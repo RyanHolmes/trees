@@ -1,5 +1,6 @@
 var localSuccess = 0;
 var localFailure = 0;
+var backupLeafs = [];
 
 function initIterate() {
   toggleContainers();
@@ -68,6 +69,7 @@ function buildLeafArray(date){
         }
     }
   }
+  // backupLeafs = allLeafs;
 };
 
 function next(){
@@ -233,5 +235,6 @@ function doneIteration() {
 };
 
 function restart(){
-  console.log("not done yet");
+  // console.log(backupLeafs);
+  nextNode(isRandom);
 };
