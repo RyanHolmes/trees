@@ -1,6 +1,17 @@
 $(document).ready(function(){
-  $("#json_render").width($("#mainTree").width())
-  var obj = getData();
+  $("#json_render").width($("#mainTree").width());
+  var obj = null;
+  if (localStorage.getItem("data")){
+    obj = JSON.parse(localStorage.getItem("data"));
+  }else {
+    obj = getData();
+  }
+  if(typeof(Storage) !== "undefined") {
+    canSave = true;
+  } else {
+      canSave = false;
+      alert('Sorry! No Web Storage support..');
+  }
   $('#modalForNote').modal({ show: false});
   $('#modalForSuccess').modal({ show: false});
   $('#modalForDownload').modal({ show: false});
@@ -112,10 +123,11 @@ function customMenu(node) {
 };
 
 function save(){
-  var tree = $('#tree').jstree(true);
-  if(tree != null){
-    v = getTree().tree.get_json('#', { 'flat': true });
-    $("#json_render").text(JSON.stringify(v, null, 4));
+  if(canSave) {
+    localStorage.setItem("data", JSON.stringify(getTree().tree.get_json('#', { 'flat': true })));
+    alert("Data Saved!"); //TODO not an alert
+  } else {
+      alert('Sorry! No Web Storage support..');
   }
 };
 

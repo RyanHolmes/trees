@@ -8,7 +8,7 @@
 // 6) Settings panel -> how many successes unitl mark? custom user set icons? etc
 // ################################################################################################
 
-
+var canSave = false;
 var allLeafs = [];
 var nodeLeafs = [];
 var size = 1;
